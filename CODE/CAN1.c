@@ -222,6 +222,7 @@ int main()
   
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 int uds_init()
@@ -239,6 +240,8 @@ int uds()
 =======
 >>>>>>> parent of 0c74f63 (add main function)
 >>>>>>> 3f445fd22a767329728d4daee6c3468c13752371
+=======
+>>>>>>> parent of d0600b5 (add uds_init function)
 =======
 >>>>>>> parent of d0600b5 (add uds_init function)
 /* END CAN1. */

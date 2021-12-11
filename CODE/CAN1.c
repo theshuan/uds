@@ -216,6 +216,12 @@ int main()
 
   
 }
+
+
+int uds_init()
+{
+  
+}
 /* END CAN1. */
 
 /*

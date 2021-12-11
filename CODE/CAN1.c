@@ -18,12 +18,12 @@
 **
 **          The basic features of the MSCAN are as follows:
 **          - Implementation of the CAN protocol - Version 2.0A/B
-**          – Standard and extended data frames
-**          – 0 - 8 bytes data length
-**          – Programmable bit rate up to 1 Mbps1
-**          – Support for remote frames
-**          – 5 receive buffers with FIFO storage scheme
-**          - 3 transmit buffers with internal prioritization using a “local
+**          ï¿½ Standard and extended data frames
+**          ï¿½ 0 - 8 bytes data length
+**          ï¿½ Programmable bit rate up to 1 Mbps1
+**          ï¿½ Support for remote frames
+**          ï¿½ 5 receive buffers with FIFO storage scheme
+**          - 3 transmit buffers with internal prioritization using a ï¿½local
 **          priority concept
 **          - Flexible maskable identifier filter supports two full size
 **          extended identifier filters (two 32-bit) or four 16-bit filters
@@ -209,6 +209,13 @@ void CAN1_Init(void)
   setReg8(CANTIER, 0x00U);              
 }
 
+
+
+int main()
+{
+
+  
+}
 /* END CAN1. */
 
 /*

@@ -210,7 +210,10 @@ void CAN1_Init(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3f445fd22a767329728d4daee6c3468c13752371
 
 
 int main()
@@ -224,12 +227,17 @@ int uds_init()
 {
   
 }
+<<<<<<< HEAD
 
 int uds()
 {
   
 }
 >>>>>>> parent of 3f445fd (Revert "add main function")
+=======
+=======
+>>>>>>> parent of 0c74f63 (add main function)
+>>>>>>> 3f445fd22a767329728d4daee6c3468c13752371
 /* END CAN1. */
 
 /*

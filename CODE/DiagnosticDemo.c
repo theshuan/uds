@@ -42,15 +42,15 @@ void ForceReset(){
 
 void SystemReset(EcuResetType resetType)
 {
-	if(resetType == 1)//Ó²¼þ¸´Î»
+	if(resetType == 1)//Ó²ï¿½ï¿½ï¿½ï¿½Î»
 	{
 		ForceReset();
 	}
-	else if(resetType == 2)//key-off-on¸´Î»
+	else if(resetType == 2)//key-off-onï¿½ï¿½Î»
 	{
-		//ForceReset();²»Ö§³Ö¸´Î»ÀàÐÍÊ±£¬²»×÷´¦Àí¼´¿É
+		//ForceReset();ï¿½ï¿½Ö§ï¿½Ö¸ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
-	else if(resetType == 3)//Èí¼þ¸´Î»
+	else if(resetType == 3)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»
 	{
 		ForceReset();
 	}
@@ -58,10 +58,10 @@ void SystemReset(EcuResetType resetType)
 
 void CommulicatonControl(CommulicationType type, communicationParam param)
 {
-	bool rxenable = ((type & 0x02) == 0x00);//ÔÊÐí½ÓÊÕ
-	bool txenable = ((type & 0x01) == 0x00);//ÔÊÐí·¢ËÍ
-	bool CtrlNmMessage = ((param & 0x02) == 0x02);//¿ØÖÆÍøÂç¹ÜÀíÏûÏ¢
-	bool CtrlAppMessage = ((param & 0x01) == 0x01);//¿ØÖÆÓ¦ÓÃ±¨ÎÄ
+	bool rxenable = ((type & 0x02) == 0x00);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool txenable = ((type & 0x01) == 0x00);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool CtrlNmMessage = ((param & 0x02) == 0x02);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	bool CtrlAppMessage = ((param & 0x01) == 0x01);//ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã±ï¿½ï¿½ï¿½
 	
 	if(CtrlNmMessage)
 	{
@@ -77,7 +77,7 @@ void CommulicatonControl(CommulicationType type, communicationParam param)
 
 uint32_t SeedToKeyDemo(uint32_t seed)
 {
-	return 0x12345678;//Õë¶ÔÄ³Ò»¸öÇëÇóµÄ°²È«Ëã·¨
+	return 0x12345678;//ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½È«ï¿½ã·¨
 }
 
 byte SendFrame(VUINT32 ID, byte *array, byte length, byte priority , uint8_t rtr ,uint8_t ide) 
@@ -110,7 +110,7 @@ byte SendFrame(VUINT32 ID, byte *array, byte length, byte priority , uint8_t rtr
 	CANTXDLR=length;  
 	CANTXTBPR=priority; 
 
-	CANTFLG=CANTBSEL;    //·¢ËÍ»º³åÇøÏàÓ¦TXEÎ»Ð´1Çå³ý¸ÃÎ»À´Í¨ÖªMSCAN·¢ËÍÊý¾Ý  
+	CANTFLG=CANTBSEL;    //ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦TXEÎ»Ð´1ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Í¨ÖªMSCANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 	return CANTBSEL;
 }
 
@@ -263,11 +263,11 @@ void Diagnostic_Init_Config(void)
 	InitSetDTCControlSupress(TRUE);
 	  //********************************** service 22  2E  2F*****************************************//
 
-	InitAddDID(0xF180, 2 , NULL ,  EEPROM_DID , NULL , READONLY , 0 ,TRUE);//Ö»ÄÜ¶ÁµÄDID,´æ´¢ÔÚEEPROMÖÐ£¬¿ÉÔÚÏÂÏßÅäÖÃÊ±Ð´
-	InitAddDID(0xF190, 17, NULL , EEPROM_DID , NULL , READWRITE , 0 , FALSE);//¿É¶ÁÐ´µÄDID£¬´æ´¢ÔÚEEPROMÖÐ
-	InitAddDID(0x9816,1 , &TestCurrentTemp , REALTIME_DID , NULL , READONLY , 0 ,FALSE);//Ö»¶ÁDID£¬ÊµÊ±Êý¾Ý(Èç±¨ÎÄÊý¾ÝµÈ)¡£
-	InitAddDID(0x9823,1 , &IO9826_MixMtrCtrl , IO_DID , IoControl_9826 , READWRITE , 0 ,FALSE);//¿É¶ÁÐ´µÄIO DID£¬¼È¿ÉÒÔÍ¨¹ý22·þÎñ¶ÁÈ¡£¬Ò²¿ÉÒÔÍ¨¹ý2F·þÎñ¿ØÖÆ
-	InitAddDID(0x9826,1 , NULL , IO_DID , IoControl_9826 , WRITEONLY , 0 , FALSE);//Ö»ÄÜÍ¨¹ý2F¿ØÖÆµÄIO DID¡£
+	InitAddDID(0xF180, 2 , NULL ,  EEPROM_DID , NULL , READONLY , 0 ,TRUE);//Ö»ï¿½Ü¶ï¿½ï¿½ï¿½DID,ï¿½æ´¢ï¿½ï¿½EEPROMï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ð´
+	InitAddDID(0xF190, 17, NULL , EEPROM_DID , NULL , READWRITE , 0 , FALSE);//ï¿½É¶ï¿½Ð´ï¿½ï¿½DIDï¿½ï¿½ï¿½æ´¢ï¿½ï¿½EEPROMï¿½ï¿½
+	InitAddDID(0x9816,1 , &TestCurrentTemp , REALTIME_DID , NULL , READONLY , 0 ,FALSE);//Ö»ï¿½ï¿½DIDï¿½ï¿½ÊµÊ±ï¿½ï¿½ï¿½ï¿½(ï¿½ç±¨ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½)ï¿½ï¿½
+	InitAddDID(0x9823,1 , &IO9826_MixMtrCtrl , IO_DID , IoControl_9826 , READWRITE , 0 ,FALSE);//ï¿½É¶ï¿½Ð´ï¿½ï¿½IO DIDï¿½ï¿½ï¿½È¿ï¿½ï¿½ï¿½Í¨ï¿½ï¿½22ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½2Fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	InitAddDID(0x9826,1 , NULL , IO_DID , IoControl_9826 , WRITEONLY , 0 , FALSE);//Ö»ï¿½ï¿½Í¨ï¿½ï¿½2Fï¿½ï¿½ï¿½Æµï¿½IO DIDï¿½ï¿½
 	#if 1
 	InitSetCanDriverVersionDID(0x0A01);
 	InitSetCanNMVersionDID(0x0A02);
@@ -285,7 +285,7 @@ void Diagnostic_Init_Config(void)
 	//********************************** service 19*****************************************//
  	InitSetSessionSupportAndSecurityAccess(TRUE,0x19,LEVEL_ZERO,LEVEL_UNSUPPORT,LEVEL_ZERO,LEVEL_ZERO,LEVEL_UNSUPPORT,LEVEL_ZERO);
 
-	InitSetDTCAvailiableMask(0x09);             //  Ö§³ÖµÄ¹ÊÕÏ×´Ì¬ÑÚÂë
+	InitSetDTCAvailiableMask(0x09);             //  Ö§ï¿½ÖµÄ¹ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
 	InitAddDTC(0x910223,NMGetLimpHome,10, 1 ,LEVEL_C);			//limphome
 	//********************************** service 14*****************************************//
 
@@ -313,6 +313,8 @@ void main(void)
 {
   /* Write your local variable definition here */
 
+
+/* modify by wds */
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
